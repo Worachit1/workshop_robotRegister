@@ -9,10 +9,19 @@ Suite Setup    Open Browser    ${baseUrl}    chrome
 *** Test Cases ***
 Register a new account on Future Skill
     Step 1: Navigate to Future Skill website
+    Capture Page Screenshot    Step_1_Navigate_to_Future_Skill.png
+
     Step 2: Click "สมัครสมาชิก" button
+    Capture Page Screenshot    Step_2_Click_Register_Button.png
+
     Step 3: Fill out registration form
+    Capture Page Screenshot    Step_3_Fill_Registration_Form.png
+
     Step 4: Submit registration form
+    Capture Page Screenshot    Step_4_Submit_Registration_Form.png
+
     Step 5: Verify OTP page message
+    Capture Page Screenshot    Step_5_Verify_OTP_Page_Message.png
 
 *** Keywords ***
 
@@ -28,7 +37,6 @@ Step 3: Fill out registration form
     [Documentation]    กรอกข้อมูลสมัครสมาชิก เช่น อีเมล รหัสผ่าน ชื่อ นามสกุล และเบอร์โทรศัพท์
     CommonKeywords.Wait until element is ready then input text    name=email    ${email}
     
-    # รอและกรอกข้อมูลในฟิลด์ต่าง ๆ
     Wait Until Element Is Visible    xpath=//input[@name='newPassword']    30s
     Input Text    xpath=//input[@name='newPassword']    ${password}
 
@@ -56,7 +64,6 @@ Step 5: Verify OTP page message
     Wait Until Element Is Visible    xpath=//input[@name='otpCode']    30s
     Input Text    xpath=//input[@name='otpCode']    ${otp_message}
 
-    # ตรวจสอบข้อความ OTP
     Wait Until Page Contains    ระบบได้ส่งรหัส OTP ไปยังเบอร์โทรศัพท์
     Wait Until Element Is Visible    xpath=//button[contains(text(), 'ยืนยัน')]    30s
     Click Button    xpath=//button[contains(text(), 'ยืนยัน')]
